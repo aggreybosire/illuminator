@@ -1,0 +1,17 @@
+{
+    "name": "firalabs/illuminator",
+    "description": "An amazingly generator for laravel 4",
+    "authors": [
+        {
+            "name": "Maxime Beaudoin",
+            "email": "firalabs@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "minimum-stability": "dev"
+}
