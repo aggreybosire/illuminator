@@ -35,9 +35,24 @@ class Cli
 
 		// assign the params
 		$command = ($arguments[1] !== '') ? $arguments[1] : 'help';
-		$args = array_slice($arguments, 1);
+		$args = array_slice($arguments, 2);
+		$_SERVER['CLI'] = array();
 		
-		var_dump($command);
+		
+		//For each arguments,
+		foreach ($args as $key => $argument){
+			
+			//if is a options
+			if(strpos($argument, '--') === 0){
+				
+				//Set option
+				$_SERVER['CLI'][strtoupper(str_replace('--', '', $args[$key]))] = true;
+				
+				//Unset in the argument array;
+				unset($args[$key]);
+			}
+			
+		}
 
 		switch($command)
 		{
