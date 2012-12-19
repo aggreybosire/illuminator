@@ -1,6 +1,6 @@
 {
     "name": "firalabs/illuminator",
-    "description": "An amazingly generator for laravel 4",
+    "description": "An amazingly generator for laravel 4. Based on laravel-bob",
     "authors": [
         {
             "name": "Maxime Beaudoin",
