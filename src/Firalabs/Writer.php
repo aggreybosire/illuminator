@@ -2,6 +2,8 @@
 
 namespace Firalabs;
 
+use Illuminate\Filesystem as File;
+
 /**
  * The writer class is used by Generator's to store arrays of filesystem
  * changes that can be written at the same time.

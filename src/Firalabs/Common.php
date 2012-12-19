@@ -2,6 +2,8 @@
 
 namespace Firalabs;
 
+use Illuminate\Filesystem as File;
+
 /**
  * Common is a utility class for the bob
  * generation system.
