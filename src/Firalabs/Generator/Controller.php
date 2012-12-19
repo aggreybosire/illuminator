@@ -68,17 +68,6 @@ class Controller extends Generator
 		foreach ($this->arguments as $action)
 		{
 
-			/*
-			if(strstr($action, ':'))
-			{
-				$parts = explode(':', $action);
-
-				if (count($parts) == 2)
-				{
-					$action = strtolower($parts[1]);
-				}
-			}*/
-
 			// add the current action to the markers
 			$markers['#ACTION#'] = $action;
 			$markers['#ACTION_LOWER#'] = strtolower($action);
@@ -87,7 +76,7 @@ class Controller extends Generator
 			$this->writer->create_file(
 				'View',
 				$this->class_path.$this->lower.'/'.strtolower($action).$this->_view_extension,
-				'generated/views/'.strtolower($this->class_path).$this->lower.'/'.strtolower($action).$this->_view_extension,
+				'views/'.strtolower($this->class_path).$this->lower.'/'.strtolower($action).$this->_view_extension,
 				Common::replace_markers($markers, $view_template)
 			);
 
@@ -103,7 +92,7 @@ class Controller extends Generator
 		$this->writer->create_file(
 			'Controller',
 			$markers['#CLASS#'].'_Controller',
-			'generated/controllers/'.$this->class_path.$this->standard.'.php',
+			'controllers/'.$this->class_path.$this->standard.'.php',
 			Common::replace_markers($markers, $template)
 		);
 

@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php 
+
+//Include autoloader
+require_once('vendor/autoload.php');
+
+//Create cli object
+$cli = new Firalabs\Cli();
+
+//Run cli
+$cli->run($_SERVER['argv']);

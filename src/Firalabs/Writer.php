@@ -40,6 +40,15 @@ class Writer
 	 * @var array
 	 */
 	private $_filecopy = array();
+	
+	/**
+	 * Configuration
+	 * 
+	 * @var array
+	 */
+	private static $_config = array(
+		'base_path' => 'generated/'
+	);
 
 	/**
 	 * Add a file to the creation array.
@@ -55,7 +64,7 @@ class Writer
 		$new = array(
 			'type' => $type,
 			'name' => $name,
-			'location' => $location,
+			'location' => static::$_config['base_path'] . $location,
 			'contents' => $contents
 		);
 

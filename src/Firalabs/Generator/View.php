@@ -66,7 +66,7 @@ class View extends Generator
 		$this->writer->create_file(
 			'View',
 			$this->class_path.$this->lower.$this->_view_extension,
-			'generated/views/'.$this->class_path.$this->lower.$this->_view_extension,
+			'views/'.$this->class_path.$this->lower.$this->_view_extension,
 			Common::replace_markers($markers, $template)
 		);
 	}
