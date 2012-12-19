@@ -79,6 +79,6 @@ class View extends Generator
 	 */
 	private function _settings()
 	{
-		if(Common::config('blade')) $this->_view_extension = BLADE_EXT;
+		if(Common::config('blade')) $this->_view_extension = '.blade.php';
 	}
 }

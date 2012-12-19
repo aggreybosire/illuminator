@@ -137,6 +137,9 @@ class Writer
 	 */
 	public function write()
 	{
+		//Separator		
+		Common::log('{w}----------------------------------');
+		
 		// notifications for switches
 		if (Common::config('pretend')) 	Common::log('{c}[ {y}PRETEND MODE ACTIVE {c}]');
 		if (Common::config('force')) 	Common::log('{c}[ {y}FORCING OVERWRITE {c}]');
@@ -152,6 +155,7 @@ class Writer
 
 		// hell yes we can
 		Common::log('{c}-- Yes we can! --');
+		Common::log('{w}----------------------------------');
 	}
 
 	/**
