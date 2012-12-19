@@ -177,6 +177,10 @@ class Writer
 	 */
 	private function _write_files()
 	{
+		
+		//Create file ojbect
+		$filesystem = new File();
+		
 		// for each file in the files array
 		foreach($this->_files as $file)
 		{
@@ -184,7 +188,7 @@ class Writer
 			if(! Common::config('pretend')) @mkdir(dirname($file['location']) , 0777, true);
 
 			// check for the --force switch for overwrite
-			if(@File::exists($file['location']) && (Common::config('force') == false))
+			if(@$filesystem->exists($file['location']) && (Common::config('force') == false))
 			{
 				Common::log("{c}({y}~{c}) {y}{$file['type']}\t\t{w}{$file['name']} (Exists - Skipped)");
 				continue;
@@ -194,7 +198,7 @@ class Writer
 			if(! Common::config('pretend'))
 			{
 				// try to create the file
-				if(@File::put($file['location'], $file['contents']))
+				if(@$filesystem->put($file['location'], $file['contents']))
 				{
 					// log something pretty to the terminal
 					Common::log("{c}({g}~{c}) {y}{$file['type']}\t\t{w}{$file['name']}");
@@ -215,11 +219,14 @@ class Writer
 
 	private function _append_files()
 	{
+		//Create file ojbect
+		$filesystem = new File();
+		
 		foreach($this->_append as $file)
 		{
-			if (! File::exists($file['file']))  File::append($file['file'], "<?php\n");
+			if (! $filesystem->exists($file['file']))  $filesystem->append($file['file'], "<?php\n");
 
-			File::append($file['file'], $file['contents']);
+			$filesystem->append($file['file'], $file['contents']);
 		}
 	}
 
@@ -239,13 +246,16 @@ class Writer
 	 */
 	private function _copy_dirs()
 	{
+		//Create file ojbect
+		$filesystem = new File();
+		
 		// loop through dirs to copy
 		foreach ($this->_dircopy as $dir)
 		{
 			// if force is set we overwrite anyway
 			if(! is_dir($dir['destination']) and (Common::config('force') == false))
 			{
-				if(! Common::config('pretend')) File::cpdir($dir['source'], $dir['destination']);
+				if(! Common::config('pretend')) $filesystem->cpdir($dir['source'], $dir['destination']);
 
 				// log something pretty to the terminal
 				Common::log("{c}({g}~{c}) {y}{$dir['type']}\t\t{w}{$dir['name']}");

@@ -96,15 +96,19 @@ class Common
 	 */
 	public static function load_template($template_name)
 	{
+		
+		//Create file object
+		$file = new File();
+		
 		// first look in the project templates this way
 		// the user can have project-specific templating
-		if(File::exists($source = static::$_config['project_templates'].$template_name))
+		if($file->exists($source = static::$_config['project_templates'].$template_name))
 		{
-			return File::get($source);
+			return $file->get($source);
 		}
-		elseif(File::exists($source = static::$_config['template_path'].$template_name))
+		elseif($file->exists($source = static::$_config['template_path'].$template_name))
 		{
-			return File::get($source);
+			return $file->get($source);
 		}
 		else
 		{
